@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATID | SWGRHyF - Gestión de Incidencias</title>
+    <!-- Vinculamos la hoja de estilos general subiendo un nivel -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- Barra Superior Institucional -->
+    <header class="top-navbar">
+        <div class="navbar-brand">
+            <span>ATID | SWGRHyF</span>
+        </div>
+        <div class="navbar-user">
+            <span id="user-role-display">Cargando...</span>
+            <button id="btn-logout" class="btn-logout" title="Cerrar Sesión">Salir</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        
+        <!-- Menú de Navegación Lateral -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">Inicio / Dashboard</a>
+                <a href="personal.html" class="nav-item">Gestión de Personal</a>
+                <a href="asistencias.html" class="nav-item">Control de Asistencias</a>
+                <a href="incidencias.html" class="nav-item active">Gestión de Incidencias</a>
+                <a href="nomina.html" class="nav-item">Nómina y Finanzas</a>
+            </nav>
+
+            <div class="sidebar-logo">
+                <img src="../Imagenes/Logo ATID.jpg" alt="Logotipo ATID" class="sidebar-logo-img">
+                <small>Agencia de Tecnologías e Innovación Digital</small>
+            </div>
+        </aside>
+
+        <!-- Área Principal de Contenido (Módulo de Incidencias) -->
+        <main class="main-content">
+            
+            <div class="breadcrumb">
+                <span>Inicio / Gestión de Incidencias, Permisos y Licencias</span>
+            </div>
+
+            <h1>Gestión de Incidencias y Permisos</h1>
+
+            <!-- Panel de Acciones y Búsqueda -->
+            <div class="action-bar" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <div>
+                    <input type="text" id="buscarIncidencia" placeholder="Buscar por Empleado o Folio..." style="padding: 8px 12px; width: 300px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px;">
+                </div>
+                <div>
+                    <button class="btn-ingresar" style="width: auto; padding: 8px 16px; font-size: 13px;" onclick="alert('Nueva Solicitud de Permiso / Incidencia en desarrollo.')">+ Registrar Nueva Solicitud</button>
+                </div>
+            </div>
+
+            <!-- Tabla de Control de Incidencias -->
+            <div class="table-container" style="background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow-x: auto;">
+                <h3 style="margin-top: 0; color: #1e293b; font-size: 16px; margin-bottom: 15px;">Bitácora de Solicitudes y Licencias</h3>
+                
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; min-width: 1050px;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #e2e8f0; color: #64748b;">
+                            <th style="padding: 10px; width: 90px;">Folio</th>
+                            <th style="padding: 10px; width: 210px;">Nombre Completo</th>
+                            <th style="padding: 10px; width: 140px;">Tipo de Incidencia</th>
+                            <th style="padding: 10px; width: 160px;">Periodo Solicitado</th>
+                            <th style="padding: 10px; width: 110px;">Días / Hrs</th>
+                            <th style="padding: 10px; width: 100px;">Estatus</th>
+                            <th style="padding: 10px; text-align: center; width: 220px;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-incidencias">
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 12px; font-family: monospace;">INC-2026-001</td>
+                            <td style="padding: 12px; font-weight: 600;">María Fernanda Gómez Ruiz</td>
+                            <td style="padding: 12px; color: #475569;">Vacaciones Ordinarias</td>
+                            <td style="padding: 12px; color: #475569;">20/03/2026 al 24/03/2026</td>
+                            <td style="padding: 12px; color: #475569;">5 días</td>
+                            <td style="padding: 12px;"><span style="color: #D97706; font-weight: 600;">Pendiente</span></td>
+                            <td style="padding: 12px; text-align: center;">
+                                <div style="display: flex; gap: 5px; justify-content: center;">
+                                    <button style="padding: 5px 8px; background: #59B038; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" onclick="alert('Solicitud autorizada correctamente.')">Autorizar</button>
+                                    <button style="padding: 5px 8px; background: #9D2449; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" onclick="alert('Solicitud rechazada.')">Rechazar</button>
+                                    <button style="padding: 5px 8px; background: #0098D4; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" onclick="alert('Detalle de incidencia.')">Detalle</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 12px; font-family: monospace;">INC-2026-002</td>
+                            <td style="padding: 12px; font-weight: 600;">Carlos Alberto Morales Pérez</td>
+                            <td style="padding: 12px; color: #475569;">Licencia Médica (IMSS)</td>
+                            <td style="padding: 12px; color: #475569;">10/03/2026 al 12/03/2026</td>
+                            <td style="padding: 12px; color: #475569;">3 días</td>
+                            <td style="padding: 12px;"><span style="color: #59B038; font-weight: 600;">Aprobado</span></td>
+                            <td style="padding: 12px; text-align: center;">
+                                <div style="display: flex; gap: 5px; justify-content: center;">
+                                    <button style="padding: 5px 8px; background: #64748b; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" disabled>Autorizado</button>
+                                    <button style="padding: 5px 8px; background: #0098D4; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" onclick="alert('Detalle de incidencia.')">Detalle</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Script de control de sesión -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const usuarioGuardado = localStorage.getItem("usuarioLogueado");
+            if (!usuarioGuardado) {
+                window.location.href = "../index.html";
+                return;
+            }
+            try {
+                const datosUsuario = JSON.parse(usuarioGuardado);
+                const display = document.getElementById("user-role-display");
+                if (display && datosUsuario) {
+                    display.innerText = `${datosUsuario.user.toUpperCase()} (${datosUsuario.rol})`;
+                }
+            } catch (e) {
+                window.location.href = "../index.html";
+            }
+        });
+
+        document.getElementById("btn-logout").addEventListener("click", function() {
+            localStorage.removeItem("usuarioLogueado");
+            window.location.href = "../index.html";
+        });
+    </script>
+</body>
+</html>

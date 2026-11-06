@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATID | SWGRHyF - Gestión de Personal</title>
+    <!-- Vinculamos la hoja de estilos general subiendo un nivel -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- Barra Superior Institucional -->
+    <header class="top-navbar">
+        <div class="navbar-brand">
+            <span>ATID | SWGRHyF</span>
+        </div>
+        <div class="navbar-user">
+            <span id="user-role-display">Cargando...</span>
+            <button id="btn-logout" class="btn-logout" title="Cerrar Sesión">Salir</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        
+        <!-- Menú de Navegación Lateral -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">Inicio / Dashboard</a>
+                <a href="personal.html" class="nav-item active">Gestión de Personal</a>
+                <a href="asistencias.html" class="nav-item">Control de Asistencias</a>
+                <a href="incidencias.html" class="nav-item">Gestión de Incidencias</a>
+                <a href="nomina.html" class="nav-item">Nómina y Finanzas</a>
+            </nav>
+
+            <div class="sidebar-logo">
+                <img src="../Imagenes/Logo ATID.jpg" alt="Logotipo ATID" class="sidebar-logo-img">
+                <small>Agencia de Tecnologías e Innovación Digital</small>
+            </div>
+        </aside>
+
+        <!-- Área Principal de Contenido (Módulo de Personal) -->
+        <main class="main-content">
+            
+            <div class="breadcrumb">
+                <span>Inicio / Gestión de Expedientes de Personal</span>
+            </div>
+
+            <h1>Catálogo y Alta de Personal</h1>
+
+            <!-- Panel de Acciones y Búsqueda -->
+            <div class="action-bar" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <div>
+                    <input type="text" id="buscarEmpleado" placeholder="Buscar por Nombre, CURP o RFC..." style="padding: 8px 12px; width: 300px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px;">
+                </div>
+                <div>
+                    <button class="btn-ingresar" style="width: auto; padding: 8px 16px; font-size: 13px;" onclick="alert('Funcionalidad de Alta de Nuevo Empleado (HU-007) en desarrollo.')">+ Registrar Nuevo Empleado</button>
+                </div>
+            </div>
+
+            <!-- Tabla de Expedientes de Personal -->
+            <div class="table-container" style="background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow-x: auto;">
+                <h3 style="margin-top: 0; color: #1e293b; font-size: 16px; margin-bottom: 15px;">Directorio Activo de Servidores Públicos</h3>
+                
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; min-width: 1100px;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #e2e8f0; color: #64748b;">
+                            <th style="padding: 10px; width: 70px;">ID</th>
+                            <th style="padding: 10px; width: 200px;">Nombre Completo</th>
+                            <th style="padding: 10px; width: 170px;">CURP</th>
+                            <th style="padding: 10px; width: 130px;">RFC</th>
+                            <th style="padding: 10px; width: 100px;">Fecha Ingreso</th>
+                            <th style="padding: 10px; width: 220px;">Puesto / Adscripción</th>
+                            <th style="padding: 10px; width: 80px;">Estatus</th>
+                            <th style="padding: 10px; text-align: center; width: 250px;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-personal">
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 12px;">EMP-001</td>
+                            <td style="padding: 12px; font-weight: 600;">María Fernanda Gómez Ruiz</td>
+                            <td style="padding: 12px; color: #475569; font-family: monospace; font-size: 12px;">GORM900125HOCGRM01</td>
+                            <td style="padding: 12px; color: #475569; font-family: monospace; font-size: 12px;">GORM900125HG4</td>
+                            <td style="padding: 12px; color: #475569;">15/01/2021</td>
+                            <td style="padding: 12px;">Coordinación de Desarrollo Tecnológico</td>
+                            <td style="padding: 12px;"><span style="color: #59B038; font-weight: 600;">Activo</span></td>
+                            <td style="padding: 12px; text-align: center;">
+                                <div style="display: flex; gap: 5px; justify-content: center;">
+                                    <button style="padding: 5px 8px; background: #9D2449; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" onclick="alert('Ver Expediente: EMP-001')">Ver Expediente</button>
+                                    <button style="padding: 5px 8px; background: #b08d57; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" onclick="alert('Editar Expediente: EMP-001')">Editar expediente</button>
+                                    <button style="padding: 5px 8px; background: #0098D4; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" onclick="alert('Descargar PDF: EMP-001')">Descargar PDF</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 12px;">EMP-002</td>
+                            <td style="padding: 12px; font-weight: 600;">Carlos Alberto Morales Pérez</td>
+                            <td style="padding: 12px; color: #475569; font-family: monospace; font-size: 12px;">MOPC850410HOCMRL05</td>
+                            <td style="padding: 12px; color: #475569; font-family: monospace; font-size: 12px;">MOPC850410AB2</td>
+                            <td style="padding: 12px; color: #475569;">01/03/2019</td>
+                            <td style="padding: 12px;">Dirección de Administración y Finanzas</td>
+                            <td style="padding: 12px;"><span style="color: #59B038; font-weight: 600;">Activo</span></td>
+                            <td style="padding: 12px; text-align: center;">
+                                <div style="display: flex; gap: 5px; justify-content: center;">
+                                    <button style="padding: 5px 8px; background: #9D2449; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" onclick="alert('Ver Expediente: EMP-002')">Ver Expediente</button>
+                                    <button style="padding: 5px 8px; background: #b08d57; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" onclick="alert('Editar Expediente: EMP-002')">Editar expediente</button>
+                                    <button style="padding: 5px 8px; background: #0098D4; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;" onclick="alert('Descargar PDF: EMP-002')">Descargar PDF</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Script de control de sesión -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const usuarioGuardado = localStorage.getItem("usuarioLogueado");
+            if (!usuarioGuardado) {
+                window.location.href = "../index.html";
+                return;
+            }
+            try {
+                const datosUsuario = JSON.parse(usuarioGuardado);
+                const display = document.getElementById("user-role-display");
+                if (display && datosUsuario) {
+                    display.innerText = `${datosUsuario.user.toUpperCase()} (${datosUsuario.rol})`;
+                }
+            } catch (e) {
+                window.location.href = "../index.html";
+            }
+        });
+
+        document.getElementById("btn-logout").addEventListener("click", function() {
+            localStorage.removeItem("usuarioLogueado");
+            window.location.href = "../index.html";
+        });
+    </script>
+</body>
+</html>

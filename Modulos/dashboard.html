@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATID | SWGRHyF - Dashboard Ejecutivo</title>
+    <!-- Vinculamos la hoja de estilos general -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- Barra Superior Institucional -->
+    <header class="top-navbar">
+        <div class="navbar-brand">
+            <span>ATID | SWGRHyF</span>
+        </div>
+        <div class="navbar-user">
+            <span id="user-role-display">Cargando usuario...</span>
+            <button id="btn-logout" class="btn-logout" title="Cerrar Sesión">Salir</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        
+        <!-- Menú de Navegación Lateral -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">Inicio / Dashboard</a>
+                <a href="personal.html" class="nav-item">Gestión de Personal</a>
+                <a href="asistencias.html" class="nav-item">Control de Asistencias</a>
+                <a href="incidencias.html" class="nav-item">Gestión de Incidencias</a>
+                <a href="nomina.html" class="nav-item">Nómina y Finanzas</a>
+            </nav>
+
+            <div class="sidebar-logo">
+                <img src="../Imagenes/Logo ATID.jpg" alt="Logotipo ATID" class="sidebar-logo-img">
+                <small>Agencia de Tecnologías e Innovación Digital</small>
+            </div>
+        </aside>
+
+        <!-- Área Principal de Contenido (Dashboard Ejecutivo - HU-001) -->
+        <main class="main-content">
+            
+            <div class="breadcrumb">
+                <span>Inicio / Dashboard Ejecutivo</span>
+            </div>
+
+            <h1>Panel Principal / Dashboard</h1>
+
+            <!-- Sección de Tarjetas KPI (Indicadores Clave) -->
+            <section class="cards-grid">
+                
+                <!-- Tarjeta 1: Empleados -->
+                <div class="kpi-card" style="border-top-color: #0098D4;">
+                    <h3>Empleados Activos</h3>
+                    <p class="kpi-value">1,245</p>
+                    <span class="kpi-status active">Plantilla autorizada</span>
+                </div>
+
+                <!-- Tarjeta 2: Asistencias -->
+                <div class="kpi-card" style="border-top-color: #59B038;">
+                    <h3>Asistencias Hoy</h3>
+                    <p class="kpi-value">1,180</p>
+                    <span class="kpi-status active">94.7% de cumplimiento</span>
+                </div>
+
+                <!-- Tarjeta 3: Incidencias -->
+                <div class="kpi-card" style="border-top-color: #D97706;">
+                    <h3>Incidencias Pendientes</h3>
+                    <p class="kpi-value">28</p>
+                    <span class="kpi-status warning">Requieren autorización</span>
+                </div>
+
+                <!-- Tarjeta 4: Presupuesto -->
+                <div class="kpi-card" style="border-top-color: #9D2449;">
+                    <h3>Presupuesto Ejercido</h3>
+                    <p class="kpi-value">$14.2M</p>
+                    <span class="kpi-status">78% cap. anual</span>
+                </div>
+
+            </section>
+
+            <!-- Sección de Gráficos Simulados -->
+            <section class="charts-grid">
+                <div class="chart-box">
+                    <h3>Gráfico de Asistencias Semanal</h3>
+                    <div class="chart-placeholder">
+                        <span>[Visualización de Gráfica de Barras - Asistencias]</span>
+                    </div>
+                </div>
+
+                <div class="chart-box">
+                    <h3>Distribución de Presupuesto por Capítulo</h3>
+                    <div class="chart-placeholder">
+                        <span>[Visualización de Gráfica de Pastel - Gasto Corriente]</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Script de control de sesión (Optimizado con fallback de seguridad) -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            let usuarioGuardado = localStorage.getItem("usuarioLogueado");
+            
+            // Asignación de usuario por defecto para pruebas si se accede directamente a la URL
+            if (!usuarioGuardado) {
+                const usuarioPredeterminado = { 
+                    user: "admin_ti", 
+                    pass: "1234", 
+                    rol: "Superusuario / Administrador TI" 
+                };
+                localStorage.setItem("usuarioLogueado", JSON.stringify(usuarioPredeterminado));
+                usuarioGuardado = JSON.stringify(usuarioPredeterminado);
+            }
+
+            try {
+                const datosUsuario = JSON.parse(usuarioGuardado);
+                const display = document.getElementById("user-role-display");
+                if (display && datosUsuario) {
+                    display.innerText = `${datosUsuario.user.toUpperCase()} (${datosUsuario.rol})`;
+                }
+            } catch (e) {
+                console.error("Error al procesar la sesión activa:", e);
+            }
+        });
+
+        // Cierre de sesión y limpieza de credenciales locales
+        document.getElementById("btn-logout").addEventListener("click", function() {
+            localStorage.removeItem("usuarioLogueado");
+            window.location.href = "../index.html";
+        });
+    </script>
+</body>
+</html>
